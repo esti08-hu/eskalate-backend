@@ -50,5 +50,4 @@ export class AuthController {
       message: 'Logout successful',
     };
   }
-
 }
