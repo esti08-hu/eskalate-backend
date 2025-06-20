@@ -3,6 +3,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './users/users.module';
+import { JobsModule } from './jobs/jobs.module';
+import { ApplicationsModule } from './applications/applications.module';
+import { AuthModule } from './auth/auth.module';
 import * as Joi from '@hapi/joi';
 import 'dotenv/config';
 
@@ -37,7 +41,10 @@ import 'dotenv/config';
         database: configService.get<string>('POSTGRES_DB') ?? "",
       }),
     }),
-
+    UsersModule,
+    JobsModule,
+    ApplicationsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
