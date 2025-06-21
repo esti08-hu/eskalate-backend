@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
@@ -28,6 +29,8 @@
     "@nestjs/serve-static": "^5.0.3",
     "@nestjs/swagger": "^11.2.0",
     "bcryptjs": "^3.0.2",
+    "class-validator": "^0.14.1",
+    "class-transformer": "^0.5.1",
     "cloudinary": "^2.7.0",
     "drizzle-orm": "^0.44.2",
     "multer": "^2.0.1",
