@@ -1,4 +1,3 @@
-// export const roleEnum = pgEnum('role', ['company', 'applicant']);
 export enum roleEnum {
     Company = 'company',
     Applicant = 'applicant',

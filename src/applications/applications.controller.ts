@@ -13,7 +13,7 @@ import {
   } from '@nestjs/common';
   import { FileInterceptor } from '@nestjs/platform-express';
   import { ApplicationsService } from './applications.service';
-  import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
+  import { ApiBearerAuth, ApiConsumes, ApiTags, ApiBody } from '@nestjs/swagger';
 import { CreateApplicationDto } from './create-application.dto';
 import { Roles } from 'src/common/guard/decorators/role.decorator';
 import { roleEnum } from 'src/common/enum';
@@ -29,6 +29,17 @@ import { UpdateStatusDto } from './update-status.dto';
     @Roles(roleEnum.Applicant)
     @UseInterceptors(FileInterceptor('resume'))
     @ApiConsumes('multipart/form-data')
+    @ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          resume: { type: 'string', format: 'binary' },
+          jobId: { type: 'string', format: 'uuid' },
+          coverLetter: { type: 'string' },
+        },
+        required: ['resume', 'jobId'],
+      },
+    })
     async apply(
       @UploadedFile() file: Express.Multer.File,
       @Body() dto: CreateApplicationDto,
